@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="./public/home/css/base.css" rel="stylesheet">
+    <link href="./public/home/css/index.css" rel="stylesheet">
+    <script src="./public/home/js/modernizr.js"></script>
+    <link href="./public/home/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<header>
+    <div id="logo"><a href="/"></a></div>
+    <nav class="topnav" id="topnav">
+        <a href="/"><span>首页</span><span class="en">Protal</span></a>
+        <a href="?c=About&a=List"><span>关于我</span><span class="en">About</span></a>
+        <a href="?c=Me&a=List"><span>留言版</span><span class="en">Gustbook</span></a>
+    </nav>
+</header>
+<div class="banner">
+    <section class="box">
+        <ul class="texts">
+            <p>生活赋予我们一种巨大的和无限高贵的礼品</p>
+            <p>这就是青春,充满着力量，充满着期待志愿</p>
+            <p>充满着求知和斗争的志向，充满着希望信心和青春。</p>
+        </ul>
+        <div class="avatar"><a href="?p=admin"><span>王恒兵</span></a> </div>
+    </section>
+</div>
+<div class="template">
+    <div class="box">
+    </div>
+</div>
+<article>
+    <h2 class="title_tj">
+        <p><span><?php echo $col_name['col_content'];?></span></p>
+    </h2>
+    <div class="bloglist left">
+        <?php foreach($aer_data as $value):?>
+        <?php
+        //查询分类
+        $col_id = $value['col_id'];
+        $sql_col = "SELECT col_id,col_content FROM class WHERE col_id = '$col_id'";
+        $col =  $this->dao->fetchRow($sql_col);
+        ?>
+        <h5><?php echo $value['art_title'];?></h5>
+        <figure><img src="<?php echo $value['art_cover'];?>"></figure>
+        <ul>
+            <?php
+        $content =  strip_tags($value['art_content']);
+        $content = mb_substr( $content, 0, 80, 'utf-8' );
+        $content.='......';
+      ?>
+            <p><?php echo $content;?></p>
+            <a title="/" href="?c=Article&a=Details&art_id=<?php echo $value['art_id'];?>" target="_blank" class="readmore">阅读全文>></a>
+        </ul>
+        <p class="dateview"><span><?php echo date('Y-m-d H:i:s',$value['aer_time']);?></span><span>作者：<?php echo $value['art_name'];?></span><span>个人博客：[<a href="?c=Class&a=List&col_id=<?php echo$value['col_id'];?>"><?php echo $col['col_content'];?></a>]</span></p>
+        <?php endforeach ;?>
+    </div>
+    <?php include'./app/home/view/public.html';?>
+</article>
+<footer>
+    <p>Design by DanceSmile <a href="http://www.miitbeian.gov.cn/" target="_blank"><?php echo $setup_data['icp_code'];?></a></p>
+
+</footer>
+<script src="js/silder.js"></script>
+</body>
+</html>

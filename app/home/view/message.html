@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="./public/home/css/base.css" rel="stylesheet">
+    <link href="./public/home/css/index.css" rel="stylesheet">
+    <link href="./public/home/css/bootstrap.min.css" rel="stylesheet">
+    <script src="./public/home/public/js/modernizr.js"></script>
+</head>
+<body>
+<header>
+    <div id="logo"><a href="/"></a></div>
+    <nav class="topnav" id="topnav">
+        <a href="/"><span>首页</span><span class="en">Protal</span></a>
+        <a href="?c=About&a=List"><span>关于我</span><span class="en">About</span></a>
+        <a href="?c=Me&a=List"><span>留言版</span><span class="en">Gustbook</span></a>
+    </nav>
+</header>
+<div class="banner">
+    <section class="box">
+        <ul class="texts">
+            <p>生活赋予我们一种巨大的和无限高贵的礼品</p>
+            <p>这就是青春,充满着力量，充满着期待志愿</p>
+            <p>充满着求知和斗争的志向，充满着希望信心和青春。</p>
+        </ul>
+        <div class="avatar"><a href="/?p=admin"><span>王恒兵</span></a> </div>
+
+    </section>
+</div>
+<article>
+    <div class="ad">
+        <form role="form" style="width: 80%;" method="post" action="?c=Me&a=Add" onsubmit=" return show()">
+            <div class="form-group">
+                <label for="name">姓名:</label>
+                <input type="text" class="form-control" placeholder="请输入名字" id="name" name="name" maxlength="6">
+            </div>
+            <div class="form-group">
+                <label for="name">留言:</label>
+                <input type="hidden" value="<?php echo $art_id;?>" name="art_id">
+                <textarea class="form-control" rows="10" id="content" name="content" maxlength="200" placeholder="来说两句嘛"></textarea>
+            </div>
+            <input class="btn btn-default" type="submit" value="提交" style="margin-left: 750px;">
+        </form>
+        <table class="table" style="margin-top: 10px;width: 50%">
+            <?php foreach($me_data as $value):?>
+            <tr style="height: 100px;">
+                <td style="width: 50px;">
+                    <img src="/public/upload/touxiang.jpg" style="width: 50px;height: 50px;border-radius: 50%" >
+                </td>
+                <td>
+                    <span style="color: #e5597f"><?php echo $value['me_name'];?></span> ：<span style="color: #666666;font-size: 12px;"><?php echo date('Y-m-d:H:s:i', $value['me_tiem']);?></span><br>
+                    <span style="color:#666666;font-size: 14px;"><?php echo $value['me_content'];?></span>
+                </td>
+            </tr>
+            <?php endforeach ;?>
+        </table>
+    </div>
+</article>
+<footer>
+    <p> <a href="http://www.1flove.com/" target="_blank"><?php echo$setup_data['icp_code'];?></a> </p>
+</footer>
+<script>
+    function show() {
+        if(document.getElementById('name').value ===''){
+            alert("请输入你的姓名");
+            return false;
+        }else if(document.getElementById('content').value ===''){
+            alert("请说两句吧");
+            return false;
+        }else {
+            return true;
+        }
+    }
+</script>
+</body>
+</html>
+

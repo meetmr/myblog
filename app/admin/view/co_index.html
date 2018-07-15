@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="renderer" content="webkit">
+<title>博客系统-后台管理</title>
+<link rel="stylesheet" href="./public/admin/css/pintuer.css">
+<link rel="stylesheet" href="./public/admin/css/admin.css">
+<script src="./public/admin/js/jquery.js"></script>
+<script src="./public/admin/js/pintuer.js"></script>
+<script src="./public/admin/js/respond.js"></script>
+<script src="./public/admin/js/admin.js"></script>
+
+</head>
+<body>
+<div class="lefter">
+    <div class="logo"><a href="#" target="_blank"><img src="./public/admin/images/logo.png" alt="后台管理系统" /></a></div>
+</div>
+<div class="righter nav-navicon" id="admin-nav">
+    <div class="mainer">
+        <div class="admin-navbar">
+            <span class="float-right">
+                <a class="button button-little bg-main" href="/" target="_blank">前台首页</a>
+                <a class="button button-little bg-yellow" href="?p=admin&c=Land&a=Out">注销登录</a>
+            </span>
+            <ul class="nav nav-inline admin-nav">
+                <li class="active"><a href="?p=admin" class="icon-home"> 开始</a>
+                    <ul>
+                        <li class="ax"><a href="?p=admin&c=Class&a=List">分类管理</a></li>
+                        <li class="ax" ><a href="?p=admin&c=Article&a=List">文章管理</a></li>
+                        <li class="ax"><a href="?p=admin&c=Mege&a=List">留言管理</a></li>
+                        <li class=""><a href="?p=admin&c=Setup&a=List">站点管理</a></li>
+                        <li class="active"><a href="?p=admin&c=Connect&a=List">友情链接</a></li>
+                        <li class="ax"><a href="?p=admin&c=User&a=List">用户管理</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="admin-bread">
+            <span>您好，<?php echo $_SESSION['user_name'];?>，欢迎您的光临。</span>
+            <ul class="bread">
+                <li><a href="?p=admin" class="icon-home"> 开始</a></li>
+                <li>后台首页</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="admin">
+    <div class="panel admin-panel">
+    	<div class="panel-head"><strong>友链列表</strong></div>
+
+        <table class="table table-hover">
+        	<tr>
+                <th width="120">链接名称</th>
+                <th width="400">URL</th>
+                <th width="70">站点描述</th>
+                <th width="70">操作</th>
+            </tr>
+            <?php foreach($data as $value):?>
+            <tr>
+                <td><?php echo $value['ct_content'];?></td>
+                <td><?php echo $value['ct_url'];?></td>
+                <td><?php echo $value['ct_msg'];?></td>
+                <td>
+                    <a href="?p=admin&c=Connect&a=Del&ct_id=<?php echo $value['ct_id'];?>">删除</a>
+                </td>
+            </tr>
+            <?php endforeach ?>
+        </table>
+		<div class="panel-foot text-center">
+        </div>
+        <form role="form" method="post" action="?p=admin&c=Connect&a=Insert" onsubmit="return show()">
+            <div class="form-group">
+                <label for="name">链接名称</label>
+                <input type="text" class="form-control" id="ct_content" name="ct_content"
+                       placeholder="请输入链接名称">
+            </div>
+            <div class="form-group">
+                <label for="name">&nbsp;  U  &nbsp; R&nbsp; &nbsp;  L</label>
+                <input type="text" class="form-control" id="ct_url" name="ct_url"
+                       placeholder="请输入URL">
+            </div>
+            <div class="form-group">
+                <label for="name">站点描述</label>
+                <input type="text" class="form-control" id="ct_msg" name="ct_msg"
+                       placeholder="请输入站点描述">
+            </div>
+            <input type="submit" class="btn btn-default" value="提交">
+        </form>
+
+    </div>
+
+    <br/>
+</div>
+</body>
+</html>
+<script>
+    function show() {
+        if(document.getElementById('ct_content').value===''){
+            alert("请输入链接名称");
+            return false;
+        }else if(document.getElementById('ct_url').value===''){
+            alert("请输入URL");
+            return false;
+        }else if(document.getElementById('ct_msg').value===''){
+            alert("请输入站点描述");
+            return false;
+        }else {
+            return true;
+        }
+    }
+</script>

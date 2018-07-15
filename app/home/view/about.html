@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf8">
+<title>杨青个人博客网站―一个站在web前段设计之路的女技术员个人博客网站</title>
+<meta name="keywords" content="个人博客,杨青个人博客,个人博客模板,杨青" />
+<link href="./public/home/css/base.css" rel="stylesheet">
+<link href="./public/home/css/about.css" rel="stylesheet">
+<script src="./public/home/js/modernizr.js"></script>
+</head>
+<body>
+<header>
+  <div id="logo"><a href="/"></a></div>
+    <nav class="topnav" id="topnav">
+        <a href="/"><span>首页</span><span class="en">Protal</span></a>
+        <a href="?c=About&a=List"><span>关于我</span><span class="en">About</span></a>
+        <a href="?c=Me&a=List"><span>留言版</span><span class="en">Gustbook</span></a>
+    </nav>
+</header>
+<article class="aboutcon">
+<h1 class="t_nav"><span></span><a href="/" class="n1">网站首页</a><a href="/" class="n2">关于我</a></h1>
+<div class="about left">
+    <ul>
+        <?php echo $user_data['user_meg'];?>
+    </ul>
+</div>
+<aside class="right">  
+    <div class="about_c">
+    <p>姓名：<?php echo $user_data['user_name'];?> </p>
+    <p>生日：<?php echo $user_data['user_Birthday'];?></p>
+    <p>QQ：<?php echo $user_data['user_qq'];?></p>
+    <p>邮箱：<?php echo $user_data['user_mail'];?></p>
+</div>
+</aside>
+</article>
+<footer>
+    <p> <a href="http://www.1flove.com/" target="_blank"><?php echo$setup_data['icp_code'];?></a> </p>
+</footer>
+<script src="js/silder.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="renderer" content="webkit">
+    <title>博客系统-后台管理</title>
+<link rel="stylesheet" href="./public/admin/css/pintuer.css">
+<link rel="stylesheet" href="./public/admin/css/admin.css">
+<script src="./public/admin/js/jquery.js"></script>
+<script src="./public/admin/js/pintuer.js"></script>
+<script src="./public/admin/js/respond.js"></script>
+<script src="./public/admin/js/admin.js"></script>
+
+</head>
+<body>
+<div class="lefter">
+    <div class="logo"><a href="#" target="_blank"><img src="./public/admin/images/logo.png" alt="后台管理系统" /></a></div>
+</div>
+<div class="righter nav-navicon" id="admin-nav">
+    <div class="mainer">
+        <div class="admin-navbar">
+            <span class="float-right">
+                <a class="button button-little bg-main" href="/" target="_blank">前台首页</a>
+                <a class="button button-little bg-yellow" href="?p=admin&c=Land&a=Out">注销登录</a>
+            </span>
+            <ul class="nav nav-inline admin-nav">
+                <li class="active"><a href="?p=admin" class="icon-home"> 开始</a>
+                    <ul>
+                        <li class="ax"><a href="?p=admin&c=Class&a=List">分类管理</a></li>
+                        <li class="ax" ><a href="?p=admin&c=Article&a=List">文章管理</a></li>
+                        <li class="ax"><a href="?p=admin&c=Mege&a=List">留言管理</a></li>
+                        <li class="ax"><a href="?p=admin&c=Setup&a=List">站点管理</a></li>
+                        <li class="ax"><a href="?p=admin&c=Connect&a=List">友情链接</a></li>
+                        <li class="active"><a href="?p=admin&c=User&a=List">用户管理</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="admin-bread">
+            <span>您好，admin，欢迎您的光临。</span>
+            <ul class="bread">
+                <li><a href="?p=admin" class="icon-home"> 开始</a></li>
+                <li>后台首页</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="admin">
+	<form action="?p=admin&c=User&a=Updade" method="POST">
+    <div class="panel admin-panel">
+        <table class="table table-hover">
+        	<tr>
+                <td width="">登陆名</td>
+                <td><input type="text" value="<?php echo $data['user_user'];?>" name="user_user"></td>
+            </tr>
+            <tr>
+                <td width="">姓名</td>
+                <td><input type="text" value="<?php echo $data['user_name'];?>" name="user_name"></td>
+            </tr>
+            <tr>
+                <td width="">登陆密码</td>
+                <td><input type="text" value="<?php echo $data['user_pwd'];?>" name="user_pwd"></td>
+            </tr>
+            <tr>
+                <td width="">用户生日</td>
+                <td><input type="date" value="<?php echo $data['user_Birthday'];?>" name="user_Birthday"></td>
+            </tr>
+            <tr>
+                <td width="">用户电话</td>
+                <td><input type="text" value="<?php echo $data['user_phone'];?>" name="user_phone"></td>
+            </tr>
+            <tr>
+                <td width="">个人信息</td>
+                <td>
+                    <textarea cols="150" rows="10" name="user_meg"> <?php echo $data['user_meg'];?></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td width="">用户邮件</td>
+                <td><input type="text" value="<?php echo $data['user_mail'];?>" name="user_mail"></td>
+            </tr>
+            <tr>
+                <td width="">qq</td>
+                <td><input type="text" value="<?php echo $data['user_qq'];?>" name="user_qq"></td>
+            </tr>
+            <tr>
+                <td width=""><input type="submit"> </td>
+                <td>
+                 <input type="reset">
+                </td>
+            </tr>
+        </table>
+		<div class="panel-foot text-center">
+        </div>
+    </div>
+    </form>
+    <br/>
+</div>
+</body>
+</html>
